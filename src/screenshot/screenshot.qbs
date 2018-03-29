@@ -5,11 +5,11 @@ QtGuiApplication {
     targetName: "liri-screenshot"
 
     Depends { name: "lirideployment" }
-    Depends { name: "Qt"; submodules: ["core", "core-private", "gui", "widgets", "quickcontrols2"]; versionAtLeast: "5.8" }
+    Depends { name: "Qt"; submodules: ["core", "core-private", "gui", "widgets", "quickcontrols2"]; versionAtLeast: project.minimumQtVersion }
     Depends { name: "LiriWaylandClient" }
 
     cpp.defines: [
-        'LIRIWORKSPACE_VERSION="' + project.version + '"',
+        'LIRISCREENSHOT_VERSION="' + project.version + '"',
         "QT_NO_CAST_FROM_ASCII",
         "QT_NO_CAST_TO_ASCII"
     ]
@@ -37,7 +37,7 @@ QtGuiApplication {
 
     Group {
         qbs.install: true
-        qbs.installDir: lirideployment.dataDir + "/liri-workspace/translations"
+        qbs.installDir: lirideployment.dataDir + "/liri-screenshot/translations"
         fileTagsFilter: "qm"
     }
 }

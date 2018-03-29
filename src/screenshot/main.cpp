@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     // Setup application
     QApplication app(argc, argv);
     app.setApplicationName(QStringLiteral("Screenshot"));
-    app.setApplicationVersion(QStringLiteral(LIRIWORKSPACE_VERSION));
+    app.setApplicationVersion(QStringLiteral(LIRISCREENSHOT_VERSION));
     app.setOrganizationDomain(QStringLiteral("liri.io"));
     app.setOrganizationName(QStringLiteral("Liri"));
     app.setDesktopFileName(QStringLiteral("io.liri.Screenshot.desktop"));
