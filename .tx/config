@@ -1,0 +1,14 @@
+[main]
+host = https://www.transifex.com
+
+[liri-workspace.screenshot-desktop]
+type = DESKTOP
+source_lang = en
+source_file = src/screenshot/io.liri.Screenshot.desktop.in
+file_filter = src/screenshot/translations/io.liri.Screenshot_<lang>.desktop.in
+
+[liri-workspace.screenshot-ts]
+type = QT
+source_lang = en
+source_file = src/screenshot/translations/liri-screenshot.ts
+file_filter = src/screenshot/translations/liri-screenshot_<lang>.ts
