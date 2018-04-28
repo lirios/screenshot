@@ -6,7 +6,7 @@ Comment=Save images of your screen or individual windows
 Keywords=snapshot;capture;print;screenshot;
 Categories=Qt;X-Liri;Utility;X-Liri-Utilities;
 Icon=applets-screenshooter
-Exec=liri-screenshot
+Exec=liri-screenshot --interactive
 TryExec=liri-screenshot
 Terminal=false
 StartupNotify=true
@@ -18,3 +18,4 @@ OnlyShowIn=X-Liri;
 # Translations
 Comment[it]=Salva immagini dello schermo o di singole finestre
 Name[it]=Schermata
+Icon[it]=applets-cattura schermo

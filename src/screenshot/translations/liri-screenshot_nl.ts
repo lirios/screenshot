@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl" version="2.1">
 <context>
     <name>Screenshooter</name>
     <message>
         <location filename="../screenshooter.cpp" line="182"/>
         <source>Screenshot from %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Schermafdruk van %1</translation>
     </message>
 </context>
 <context>
@@ -14,83 +12,83 @@
     <message>
         <location filename="../qml/main.qml" line="37"/>
         <source>Screenshot</source>
-        <translation type="unfinished"></translation>
+        <translation>Schermafdruk</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="56"/>
         <location filename="../qml/main.qml" line="125"/>
         <source>Screen capture</source>
-        <translation type="unfinished"></translation>
+        <translation>Schermopname</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="60"/>
         <source>Capture</source>
-        <translation type="unfinished"></translation>
+        <translation>Opname</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="74"/>
         <source>Grab</source>
-        <translation type="unfinished"></translation>
+        <translation>Vastpakken</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="80"/>
         <source>This screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit scherm</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="81"/>
         <source>Active window</source>
-        <translation type="unfinished"></translation>
+        <translation>Actief venster</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="82"/>
         <source>Specific window</source>
-        <translation type="unfinished"></translation>
+        <translation>Specifiek venster</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="83"/>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebied</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="90"/>
         <source>Delay</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertraging</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="101"/>
         <source>Include pointer</source>
-        <translation type="unfinished"></translation>
+        <translation>Muisaanwijzer toevoegen</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="111"/>
         <source>Include the window border</source>
-        <translation type="unfinished"></translation>
+        <translation>Vensterrand toevoegen</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="129"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Opslaan</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="137"/>
         <source>Copy to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Naar klembord kopiëren</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="186"/>
         <source>Save Screenshot As</source>
-        <translation type="unfinished"></translation>
+        <translation>Schermafdruk opslaan als</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="189"/>
         <source>Image files (*.jpg *.jpeg *.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldingsbestanden (*.jpg *.jpeg *.png)</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="189"/>
         <source>All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle bestanden (*)</translation>
     </message>
 </context>
 </TS>
