@@ -49,6 +49,9 @@ int main(int argc, char *argv[])
     app.setOrganizationName(QStringLiteral("Liri"));
     app.setDesktopFileName(QStringLiteral("io.liri.Screenshot.desktop"));
 
+    // Set default style
+    QQuickStyle::setStyle(QLatin1String("Material"));
+
     // Command line parser
     QCommandLineParser parser;
     parser.setApplicationDescription(QStringLiteral("Command line screencaster"));
@@ -113,10 +116,6 @@ int main(int argc, char *argv[])
         qCritical("This application requires a Wayland session");
         return 1;
     }
-
-    // Set default style
-    if (QQuickStyle::name().isEmpty())
-        QQuickStyle::setStyle(QLatin1String("Material"));
 
     // Run the application
     Screenshooter *screenshooter = new Screenshooter();
