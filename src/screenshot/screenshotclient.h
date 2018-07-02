@@ -24,38 +24,42 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#ifndef SCREENSHOOTER_H
-#define SCREENSHOOTER_H
+#ifndef SCREENSHOTCLIENT_H
+#define SCREENSHOTCLIENT_H
 
-#include <QtCore/QObject>
-#include <QtCore/QThread>
-#include <QtCore/QVector>
-#include <QtQml/QQmlApplicationEngine>
-
-#include <LiriWaylandClient/ClientConnection>
-#include <LiriWaylandClient/Registry>
-#include <LiriWaylandClient/Screenshooter>
-#include <LiriWaylandClient/Shm>
+#include <QEvent>
+#include <QFile>
+#include <QObject>
+#include <QThread>
+#include <QVector>
+#include <QQmlApplicationEngine>
 
 #include "imageprovider.h"
 
-using namespace Liri;
+class IoLiriShellScreenshooterInterface;
 
-class Screenshooter : public QObject
+class ScreenshotClient : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool enabled READ isEnabled NOTIFY enabledChanged)
 public:
     enum What {
-        Screen = 1,
+        Screens = 1,
         ActiveWindow,
         Window,
         Area
     };
     Q_ENUM(What)
 
-    Screenshooter(QObject *parent = nullptr);
-    ~Screenshooter();
+    enum Effect {
+        NoEffect = 0x0,
+        OverlayCursorEffect = 0x1,
+        KeepWindowBorderEffect = 0x2
+    };
+    Q_ENUM(Effect)
+    Q_DECLARE_FLAGS(Effects, Effect)
+
+    ScreenshotClient(QObject *parent = nullptr);
 
     bool isEnabled() const;
 
@@ -71,30 +75,12 @@ protected:
     bool event(QEvent *event) override;
 
 private:
-    bool m_initialized;
-    bool m_interactive;
-    bool m_inProgress;
-    QQmlApplicationEngine *m_engine;
-    QThread *m_thread;
-    WaylandClient::ClientConnection *m_connection;
-    WaylandClient::Registry *m_registry;
-    WaylandClient::Shm *m_shm;
-    WaylandClient::Screenshooter *m_shooter;
-
-    struct {
-        bool initialized;
-        quint32 name;
-        quint32 version;
-    } m_deferredShooter;
-
-    struct ScreenshotRequest {
-        QPoint position;
-        WaylandClient::Screenshot *screenshot;
-        WaylandClient::Buffer *buffer;
-    };
-
-    QVector<ScreenshotRequest> m_pending;
-    QVector<ScreenshotRequest> m_process;
+    bool m_initialized = false;
+    bool m_interactive = false;
+    bool m_inProgress = false;
+    IoLiriShellScreenshooterInterface *m_interface = nullptr;
+    QQmlApplicationEngine *m_engine = nullptr;
+    ImageProvider *m_imageProvider = nullptr;
 
     struct {
         What what;
@@ -103,16 +89,10 @@ private:
         int delay;
     } m_cliOptions;
 
-    ImageProvider *m_imageProvider;
-
     void initialize();
-    void process();
-    void setupScreenshot(WaylandClient::Screenshot *screenshot);
-
-private Q_SLOTS:
-    void interfacesAnnounced();
-    void interfaceAnnounced(const QByteArray &interface, quint32 name, quint32 version);
 };
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(ScreenshotClient::Effects)
 
 class InteractiveStartupEvent : public QEvent
 {
@@ -123,11 +103,11 @@ public:
 class StartupEvent : public QEvent
 {
 public:
-    StartupEvent(Screenshooter::What what, WaylandClient::Screenshooter::Effects effects, int delay);
+    StartupEvent(ScreenshotClient::What what, ScreenshotClient::Effects effects, int delay);
 
-    Screenshooter::What what;
-    WaylandClient::Screenshooter::Effects effects;
+    ScreenshotClient::What what;
+    ScreenshotClient::Effects effects;
     int delay;
 };
 
-#endif // SCREENSHOOTER_H
+#endif // SCREENSHOTCLIENT_H

@@ -26,18 +26,16 @@
 
 #include <QtCore/QCommandLineParser>
 #include <QtCore/QCommandLineOption>
+#include <QDBusConnection>
 #include <QtWidgets/QApplication>
 #include <QtQuickControls2/QQuickStyle>
 
-#include "screenshooter.h"
+#include "screenshotclient.h"
 
 #define TR(x) QT_TRANSLATE_NOOP("Command line parser", QStringLiteral(x))
 
 int main(int argc, char *argv[])
 {
-    // Force using the wayland QPA plugin
-    qputenv("QT_QPA_PLATFORM", QByteArrayLiteral("wayland"));
-
     // HighDpi scaling
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
@@ -111,30 +109,30 @@ int main(int argc, char *argv[])
     // Parse command line
     parser.process(app);
 
-    // Need to be running with wayland QPA
-    if (!QGuiApplication::platformName().startsWith(QStringLiteral("wayland"))) {
-        qCritical("This application requires a Wayland session");
+    // Check if the D-Bus session bus is available
+    if (!QDBusConnection::sessionBus().isConnected()) {
+        qWarning("Cannot connect to the D-Bus session bus.");
         return 1;
     }
 
     // Run the application
-    Screenshooter *screenshooter = new Screenshooter();
+    ScreenshotClient *screenshooter = new ScreenshotClient();
     if (parser.isSet(interactiveOption)) {
         QGuiApplication::postEvent(screenshooter, new InteractiveStartupEvent());
     } else {
-        Screenshooter::What what = Screenshooter::Screen;
+        ScreenshotClient::What what = ScreenshotClient::Screens;
         if (parser.isSet(activeWindowOption))
-            what = Screenshooter::ActiveWindow;
+            what = ScreenshotClient::ActiveWindow;
         else if (parser.isSet(windowOption))
-            what = Screenshooter::Window;
+            what = ScreenshotClient::Window;
         else if (parser.isSet(areaOption))
-            what = Screenshooter::Area;
+            what = ScreenshotClient::Area;
 
-        WaylandClient::Screenshooter::Effects effects = 0;
+        ScreenshotClient::Effects effects = ScreenshotClient::NoEffect;
         if (parser.isSet(pointerOption))
-            effects &= WaylandClient::Screenshooter::EffectPointer;
+            effects.setFlag(ScreenshotClient::OverlayCursorEffect);
         if (parser.isSet(borderOption))
-            effects &= WaylandClient::Screenshooter::EffectBorder;
+            effects.setFlag(ScreenshotClient::KeepWindowBorderEffect);
 
         bool ok = false;
         int delay = parser.value(delayOption).toInt(&ok);
@@ -144,7 +142,7 @@ int main(int argc, char *argv[])
         QGuiApplication::postEvent(screenshooter, new StartupEvent(what, effects, delay));
     }
     QObject::connect(&app, &QGuiApplication::aboutToQuit,
-                     screenshooter, &Screenshooter::deleteLater);
+                     screenshooter, &ScreenshotClient::deleteLater);
 
     return app.exec();
 }
