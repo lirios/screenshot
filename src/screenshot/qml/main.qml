@@ -189,7 +189,6 @@ FluidControls.ApplicationWindow {
         nameFilters: [ qsTr("Image files (*.jpg *.jpeg *.png)"), qsTr("All files (*)") ]
         onAccepted: {
             Screenshooter.saveScreenshot(fileDialog.fileUrl);
-            Qt.quit();
         }
     }
 
