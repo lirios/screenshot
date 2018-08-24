@@ -16,20 +16,24 @@ QtGuiApplication {
 
     cpp.includePaths: base.concat([product.buildDirectory])
 
+    Qt.core.resourcePrefix: "/"
+    Qt.core.resourceSourceBase: sourceDirectory
+
     files: [
         "imageprovider.cpp",
         "imageprovider.h",
         "main.cpp",
         "screenshotclient.cpp",
         "screenshotclient.h",
-        "screenshot.qrc",
     ]
 
     Group {
-        name: "QML Files"
-        files: ["*.qml"]
+        name: "Resource Data"
         prefix: "qml/"
-        fileTags: ["qml"]
+        files: [
+            "main.qml",
+        ]
+        fileTags: ["qt.core.resource_data"]
     }
 
     Group {
