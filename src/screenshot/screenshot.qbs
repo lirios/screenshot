@@ -6,6 +6,7 @@ QtGuiApplication {
 
     Depends { name: "lirideployment" }
     Depends { name: "Qt"; submodules: ["core", "dbus", "gui", "widgets", "quickcontrols2"]; versionAtLeast: project.minimumQtVersion }
+    Depends { name: "LiriTranslations" }
 
     cpp.defines: [
         'LIRISCREENSHOT_VERSION="' + project.version + '"',
@@ -32,6 +33,19 @@ QtGuiApplication {
     }
 
     Group {
+        name: "Desktop File"
+        files: ["io.liri.Screenshot.desktop.in"]
+        fileTags: ["liri.desktop.template"]
+    }
+
+    Group {
+        name: "Desktop File Translations"
+        files: ["io.liri.Screenshot_*.desktop"]
+        prefix: "translations/"
+        fileTags: ["liri.desktop.translations"]
+    }
+
+    Group {
         name: "Translations"
         files: ["*_*.ts"]
         prefix: "translations/"
@@ -49,6 +63,12 @@ QtGuiApplication {
         qbs.install: true
         qbs.installDir: lirideployment.binDir
         fileTagsFilter: "application"
+    }
+
+    Group {
+        qbs.install: true
+        qbs.installDir: lirideployment.applicationsDir
+        fileTagsFilter: "liri.desktop.file"
     }
 
     Group {
