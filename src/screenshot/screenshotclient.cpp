@@ -201,5 +201,8 @@ QString ScreenshotClient::screenshotFileName() const
 
 void ScreenshotClient::saveScreenshot(const QUrl &fileName)
 {
-    m_imageProvider->image.save(fileName.toLocalFile());
+    if (m_imageProvider->image.save(fileName.toLocalFile()))
+        qInfo("Screenshot saved to \"%s\" successfully", fileName.toLocalFile().toUtf8().constData());
+    else
+        qWarning("Failed to save screenshot to \"%s\"", fileName.toLocalFile().toUtf8().constData());
 }
