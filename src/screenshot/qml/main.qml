@@ -188,7 +188,7 @@ FluidControls.ApplicationWindow {
         folder: StandardPaths.writableLocation(StandardPaths.PicturesLocation)
         nameFilters: [ qsTr("Image files (*.jpg *.jpeg *.png)"), qsTr("All files (*)") ]
         onAccepted: {
-            Screenshooter.saveScreenshot(fileDialog.fileUrl);
+            Screenshooter.saveScreenshot(fileDialog.file);
         }
     }
 
