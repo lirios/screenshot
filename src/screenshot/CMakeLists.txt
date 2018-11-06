@@ -1,3 +1,9 @@
+# Translations
+file(GLOB LiriScreenshot_TRANSLATIONS "${CMAKE_CURRENT_SOURCE_DIR}/translations/*_*.ts")
+qt5_add_translation(LiriScreenshot_QM_FILES ${LiriScreenshot_TRANSLATIONS})
+install(FILES ${LiriScreenshot_QM_FILES}
+        DESTINATION "${INSTALL_DATADIR}/liri-screenshot/translations")
+
 liri_add_executable(LiriScreenshot
     OUTPUT_NAME
         "liri-screenshot"
@@ -7,6 +13,7 @@ liri_add_executable(LiriScreenshot
         main.cpp
         screenshotclient.cpp
         screenshotclient.h
+        ${LiriScreenshot_QM_FILES}
     RESOURCES
         screenshot.qrc
     DEFINES
@@ -21,9 +28,3 @@ liri_add_executable(LiriScreenshot
         Qt5::Widgets
         Qt5::QuickControls2
 )
-
-# Translations
-file(GLOB LiriScreenshot_TRANSLATIONS "${CMAKE_CURRENT_SOURCE_DIR}/translations/*_*.ts")
-qt5_add_translation(LiriScreenshot_QM_FILES ${LiriScreenshot_TRANSLATIONS})
-install(FILES ${LiriScreenshot_QM_FILES}
-        DESTINATION "${INSTALL_DATADIR}/liri-screenshot/translations")
