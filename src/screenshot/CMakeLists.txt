@@ -4,6 +4,8 @@ qt5_add_translation(LiriScreenshot_QM_FILES ${LiriScreenshot_TRANSLATIONS})
 install(FILES ${LiriScreenshot_QM_FILES}
         DESTINATION "${INSTALL_DATADIR}/liri-screenshot/translations")
 
+liri_translate_desktop(_desktop_file SOURCES "io.liri.Screenshot.desktop.in")
+
 liri_add_executable(LiriScreenshot
     OUTPUT_NAME
         "liri-screenshot"
@@ -20,6 +22,8 @@ liri_add_executable(LiriScreenshot
         QT_NO_CAST_FROM_ASCII
         QT_NO_FOREACH
         LIRISCREENSHOT_VERSION="${PROJECT_VERSION}"
+    DESKTOP
+        "${_desktop_file}"
     DBUS_INTERFACE_SOURCES
         io.liri.Shell.Screenshooter.xml
     LIBRARIES
