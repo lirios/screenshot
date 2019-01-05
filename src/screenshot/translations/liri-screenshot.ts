@@ -2,9 +2,9 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>Screenshooter</name>
+    <name>ScreenshotClient</name>
     <message>
-        <location filename="../screenshooter.cpp" line="182"/>
+        <location filename="../screenshotclient.cpp" line="199"/>
         <source>Screenshot from %1</source>
         <translation type="unfinished"></translation>
     </message>
