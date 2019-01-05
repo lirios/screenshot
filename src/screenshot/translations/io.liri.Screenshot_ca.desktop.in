@@ -16,6 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Comment[ca]=Deseu imatges de la pantalla o de finestres individuals
-Name[ca]=Captura de pantalla
 Icon[ca]=miniaplicació-capturador_de_pantalla
+Name[ca]=Captura de pantalla
+Comment[ca]=Deseu imatges de la pantalla o de finestres individuals

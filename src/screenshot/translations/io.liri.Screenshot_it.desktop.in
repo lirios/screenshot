@@ -16,6 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Comment[it]=Salva immagini dello schermo o di singole finestre
+Icon[it]=applets-screenshooter
 Name[it]=Schermata
-Icon[it]=applets-cattura schermo
+Comment[it]=Salva immagini dello schermo o di singole finestre

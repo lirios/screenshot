@@ -16,6 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Comment[zh_TW]=儲存螢幕截圖或個別的視窗
-Name[zh_TW]=螢幕截圖
 Icon[zh_TW]=小工具—螢幕截圖器
+Name[zh_TW]=螢幕截圖
+Comment[zh_TW]=儲存螢幕截圖或個別的視窗

@@ -16,6 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Comment[zh_CN]=截取屏幕或独立窗口
-Name[zh_CN]=截屏
 Icon[zh_CN]=小工具——屏幕截取器
+Name[zh_CN]=截屏
+Comment[zh_CN]=截取屏幕或独立窗口

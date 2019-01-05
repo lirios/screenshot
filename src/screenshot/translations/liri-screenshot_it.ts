@@ -1,10 +1,10 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="it" version="2.1">
 <context>
-    <name>Screenshooter</name>
+    <name>ScreenshotClient</name>
     <message>
-        <location filename="../screenshooter.cpp" line="182"/>
+        <location filename="../screenshotclient.cpp" line="199"/>
         <source>Screenshot from %1</source>
-        <translation>Screenshot da %1</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../qml/main.qml" line="101"/>
         <source>Include pointer</source>
-        <translation>Includi il cursore</translation>
+        <translation>Includi il puntatore</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="111"/>
@@ -78,7 +78,7 @@
     <message>
         <location filename="../qml/main.qml" line="186"/>
         <source>Save Screenshot As</source>
-        <translation>Sala lo screenshot come</translation>
+        <translation>Salva la cattura come</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="189"/>

@@ -16,6 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Comment[lt]=Įrašyti jūsų ekrano ar atskirų langų paveikslus
-Name[lt]=Ekrano kopija
 Icon[lt]=applets-screenshooter
+Name[lt]=Ekrano kopija
+Comment[lt]=Įrašyti jūsų ekrano ar atskirų langų paveikslus

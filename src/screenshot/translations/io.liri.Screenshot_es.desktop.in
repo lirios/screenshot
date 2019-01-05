@@ -16,6 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Comment[es]=Guarde capturas de pantalla o de ventanas individuales
-Name[es]=Captura de pantalla
 Icon[es]=applets-screenshooter
+Name[es]=Captura de pantalla
+Comment[es]=Guarde capturas de pantalla o de ventanas individuales

@@ -16,6 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Comment[pt_BR]=Salvar imagens da sua tela ou de janelas individuais
-Name[pt_BR]=Captura de tela
 Icon[pt_BR]=applets-screenshooter
+Name[pt_BR]=Captura de tela
+Comment[pt_BR]=Salvar imagens da sua tela ou de janelas individuais

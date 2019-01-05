@@ -16,6 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Comment[ru]=Cохраняйте снимки экрана и отдельных окон
-Name[ru]=Снимок экрана
 Icon[ru]=applets-screenshooter
+Name[ru]=Снимок экрана
+Comment[ru]=Cохраняйте снимки экрана и отдельных окон

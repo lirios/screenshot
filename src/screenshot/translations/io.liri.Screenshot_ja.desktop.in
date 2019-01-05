@@ -16,4 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
+Icon[ja]=applets-screenshooter
 Name[ja]=スクリーンショット
+Comment[ja]=画面やウィンドウの画像を取得

@@ -16,6 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Comment[nl]=Afbeeldingen van je scherm of afzonderlijke vensters opslaan
-Name[nl]=Schermafdruk
 Icon[nl]=applets-screenshooter
+Name[nl]=Schermafdruk
+Comment[nl]=Afbeeldingen van je scherm of afzonderlijke vensters opslaan

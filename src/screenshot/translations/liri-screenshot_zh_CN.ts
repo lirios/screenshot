@@ -1,10 +1,10 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.1">
 <context>
-    <name>Screenshooter</name>
+    <name>ScreenshotClient</name>
     <message>
-        <location filename="../screenshooter.cpp" line="182"/>
+        <location filename="../screenshotclient.cpp" line="199"/>
         <source>Screenshot from %1</source>
-        <translation>从%1截屏</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

@@ -16,6 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Comment[da]=Gem billeder af din skærm eller individuelle vinduer
-Name[da]=Skærmbillede
 Icon[da]=applets-screenshooter
+Name[da]=Skærmbillede
+Comment[da]=Gem billeder af din skærm eller individuelle vinduer

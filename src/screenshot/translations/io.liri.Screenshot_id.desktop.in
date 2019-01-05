@@ -16,5 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Name[es_MX]=Captura de pantalla
-Comment[es_MX]=Guardar imágenes de su pantalla o ventanas individuales
+Icon[id]=applets-screenshooter
+Name[id]=Tangkapan layar
+Comment[id]=Simpan tampilan layar Anda maupun jendela individual menjadi gambar

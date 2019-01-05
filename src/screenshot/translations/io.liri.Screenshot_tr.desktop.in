@@ -16,6 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Comment[tr]=Tekil pencerelerinizin veya ekranınızın resimlerini kaydedin
-Name[tr]=Ekran görüntüsü
 Icon[tr]=applets-screenshooter
+Name[tr]=Ekran Görüntüsü
+Comment[tr]=Tekil pencerelerinizin veya ekranınızın resimlerini kaydedin

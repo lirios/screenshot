@@ -16,6 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Comment[pl]=Zapisz zrzuty swojego ekranu lub pojedynczych okien
-Name[pl]=Zrzut ekranu
 Icon[pl]=alpety-zrzut-ekranu
+Name[pl]=Zrzut ekranu
+Comment[pl]=Zapisz zrzuty swojego ekranu lub pojedynczych okien

@@ -16,6 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Comment[de]=Mache Aufnahmen deines Bildschirms oder einzelner Fenster
-Name[de]=Bildschirmfoto
 Icon[de]=applets-screenshooter
+Name[de]=Bildschirmfoto
+Comment[de]=Mache Aufnahmen deines Bildschirms oder einzelner Fenster

@@ -16,6 +16,6 @@ OnlyShowIn=X-Liri;
 
 
 # Translations
-Comment[fr]=Enregistrer les images de votre écran ou de fenêtres individuelles
-Name[fr]=Capture d'Écran
 Icon[fr]=applets-screenshooter
+Name[fr]=Capture d'Écran
+Comment[fr]=Enregistrer les images de votre écran ou de fenêtres individuelles
