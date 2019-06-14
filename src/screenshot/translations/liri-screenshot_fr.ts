@@ -4,7 +4,7 @@
     <message>
         <location filename="../screenshotclient.cpp" line="199"/>
         <source>Screenshot from %1</source>
-        <translation type="unfinished"/>
+        <translation>Capture d&apos;écran de %1</translation>
     </message>
 </context>
 <context>
@@ -12,7 +12,7 @@
     <message>
         <location filename="../qml/main.qml" line="37"/>
         <source>Screenshot</source>
-        <translation>Capture d&apos;Écran</translation>
+        <translation>Capture d&apos;écran</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="56"/>
@@ -78,7 +78,7 @@
     <message>
         <location filename="../qml/main.qml" line="186"/>
         <source>Save Screenshot As</source>
-        <translation>Enregistrer la Capture d&apos;Écran Comme</translation>
+        <translation>Enregistrer la capture d&apos;écran sous</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="189"/>
