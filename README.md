@@ -22,6 +22,7 @@ The following modules and their dependencies are required:
  * [cmake](https://gitlab.kitware.com/cmake/cmake) >= 3.10.0
  * [cmake-shared](https://github.com/lirios/cmake-shared.git) >= 1.0.0
  * [fluid](https://github.com/lirios/fluid.git)
+ * [liri-wayland](https://github.com/lirios/wayland)
 
 ## Installation
 

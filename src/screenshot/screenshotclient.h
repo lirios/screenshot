@@ -34,9 +34,9 @@
 #include <QVector>
 #include <QQmlApplicationEngine>
 
-#include "imageprovider.h"
+#include <LiriWaylandClient/WlrScreencopyV1>
 
-class IoLiriShellScreenshooterInterface;
+#include "imageprovider.h"
 
 class ScreenshotClient : public QObject
 {
@@ -59,7 +59,7 @@ public:
     Q_ENUM(Effect)
     Q_DECLARE_FLAGS(Effects, Effect)
 
-    ScreenshotClient(QObject *parent = nullptr);
+    explicit ScreenshotClient(QObject *parent = nullptr);
 
     bool isEnabled() const;
 
@@ -76,20 +76,26 @@ protected:
 
 private:
     bool m_initialized = false;
+    bool m_enabled = false;
     bool m_interactive = false;
     bool m_inProgress = false;
-    IoLiriShellScreenshooterInterface *m_interface = nullptr;
+    int m_screensToGo = 0;
+    QImage m_finalImage;
     QQmlApplicationEngine *m_engine = nullptr;
     ImageProvider *m_imageProvider = nullptr;
+    WlrScreencopyManagerV1 *m_screencopy = nullptr;
 
     struct {
         What what;
-        bool pointer;
-        bool border;
+        Effects effects;
         int delay;
     } m_cliOptions;
 
     void initialize();
+    void done();
+
+private Q_SLOTS:
+    void handleFrameCopied(const QImage &image);
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ScreenshotClient::Effects)

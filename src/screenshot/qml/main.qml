@@ -77,10 +77,10 @@ FluidControls.ApplicationWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     textRole: "key"
                     model: ListModel {
-                        ListElement { key: qsTr("This screen"); value: "screen" }
-                        ListElement { key: qsTr("Active window"); value: "active-window" }
-                        ListElement { key: qsTr("Specific window"); value: "select-window" }
-                        ListElement { key: qsTr("Area"); value: "select-area" }
+                        ListElement { key: qsTr("All screens"); value: "screens" }
+                        //ListElement { key: qsTr("Active window"); value: "active-window" }
+                        //ListElement { key: qsTr("Specific window"); value: "select-window" }
+                        //ListElement { key: qsTr("Area"); value: "select-area" }
                     }
                     implicitWidth: 200
                 }
@@ -166,9 +166,9 @@ FluidControls.ApplicationWindow {
         id: shootTimer
         interval: grabDelay.value * 1000
         onTriggered: {
-            Screenshooter.takeScreenshot(optionCombo.currentIndex + 1,
-                                         includePointer.enabled && includePointer.checked,
-                                         includeBorder.enabled && includeBorder.checked);
+            var hasCursor = includePointer.enabled && includePointer.checked;
+            var hasBorder = includeBorder.enabled && includeBorder.checked;
+            Screenshooter.takeScreenshot(optionCombo.currentIndex + 1, hasCursor, hasBorder);
         }
     }
 

@@ -28,12 +28,13 @@
 #include <QGuiApplication>
 #include <QImage>
 #include <QImageReader>
+#include <QPainter>
 #include <QQmlContext>
+#include <QScreen>
 #include <QStandardPaths>
 #include <QTimer>
 
 #include "screenshotclient.h"
-#include "screenshooter_interface.h"
 
 /*
  * InteractiveStartupEvent
@@ -70,12 +71,24 @@ ScreenshotClient::ScreenshotClient(QObject *parent)
     : QObject(parent)
     , m_engine(new QQmlApplicationEngine(this))
     , m_imageProvider(new ImageProvider())
+    , m_screencopy(new WlrScreencopyManagerV1())
 {
+    connect(m_screencopy, &WlrScreencopyManagerV1::activeChanged, this, [this] {
+        bool oldValue = m_enabled;
+
+        if (!oldValue && m_screencopy->isActive() && m_initialized)
+            m_enabled = true;
+        else if (oldValue && (!m_screencopy->isActive() || !m_initialized))
+            m_enabled = false;
+
+        if (oldValue != m_enabled)
+            emit enabledChanged();
+    });
 }
 
 bool ScreenshotClient::isEnabled() const
 {
-    return m_interface != nullptr;
+    return m_enabled;
 }
 
 bool ScreenshotClient::event(QEvent *event)
@@ -87,8 +100,7 @@ bool ScreenshotClient::event(QEvent *event)
     } else if (event->type() == StartupEventType) {
         StartupEvent *e = static_cast<StartupEvent *>(event);
         m_cliOptions.what = e->what;
-        m_cliOptions.pointer = e->effects.testFlag(OverlayCursorEffect);
-        m_cliOptions.border = e->effects.testFlag(KeepWindowBorderEffect);
+        m_cliOptions.effects = e->effects;
         m_cliOptions.delay = e->delay;
         initialize();
         return true;
@@ -101,18 +113,6 @@ void ScreenshotClient::initialize()
 {
     Q_ASSERT(!m_initialized);
 
-    const QString service = QLatin1String("io.liri.Session");
-    const QString path = QLatin1String("/Screenshot");
-    const QDBusConnection bus = QDBusConnection::sessionBus();
-    m_interface = new IoLiriShellScreenshooterInterface(service, path, bus);
-    if (!m_interface->isValid()) {
-        qWarning("Cannot find D-Bus service, please run this program under Liri Shell.");
-        m_interface->deleteLater();
-        m_interface = nullptr;
-        QCoreApplication::exit(1);
-        return;
-    }
-
     m_initialized = true;
 
     if (m_interactive) {
@@ -121,17 +121,52 @@ void ScreenshotClient::initialize()
         m_engine->load(QUrl(QLatin1String("qrc:/qml/main.qml")));
     } else {
         QTimer::singleShot(m_cliOptions.delay * 1000, this, [this] {
-            takeScreenshot(m_cliOptions.what, m_cliOptions.pointer, m_cliOptions.border);
+            takeScreenshot(m_cliOptions.what,
+                           m_cliOptions.effects.testFlag(OverlayCursorEffect),
+                           m_cliOptions.effects.testFlag(KeepWindowBorderEffect));
         });
     }
 
-    Q_EMIT enabledChanged();
+    if (m_screencopy->isActive()) {
+        m_enabled = true;
+        emit enabledChanged();
+    }
+}
+
+void ScreenshotClient::done()
+{
+    emit screenshotDone();
+
+    m_inProgress = false;
+
+    // Quit in non-interactive mode because we only take one screenshot
+    if (!m_interactive)
+        QGuiApplication::quit();
+}
+
+void ScreenshotClient::handleFrameCopied(const QImage &image)
+{
+    auto *frame = qobject_cast<WlrScreencopyFrameV1 *>(sender());
+    if (!frame)
+        return;
+
+    QPainter painter(&m_finalImage);
+    painter.drawImage(frame->screen()->geometry().topLeft(), image);
+
+    m_screensToGo--;
+
+    if (m_screensToGo == 0) {
+        m_imageProvider->image = m_finalImage;
+        done();
+    }
 }
 
 void ScreenshotClient::takeScreenshot(What what, bool includePointer, bool includeBorder)
 {
+    Q_UNUSED(includeBorder)
+
     if (!isEnabled()) {
-        qWarning("Cannot take screenshots until we are bound to the interfaces");
+        qWarning("Cannot take screenshots until ready");
         return;
     }
 
@@ -140,54 +175,25 @@ void ScreenshotClient::takeScreenshot(What what, bool includePointer, bool inclu
         return;
     }
 
-    QDBusPendingCallWatcher *watcher = nullptr;
-
     switch (what) {
     case Screens: {
-        QDBusPendingCall pendingCall = m_interface->captureScreens(includePointer);
-        watcher = new QDBusPendingCallWatcher(pendingCall, this);
-        break;
-    }
-    case ActiveWindow: {
-        QDBusPendingCall pendingCall = m_interface->captureActiveWindow(includePointer, includeBorder);
-        watcher = new QDBusPendingCallWatcher(pendingCall, this);
-        break;
-    }
-    case Window: {
-        QDBusPendingCall pendingCall = m_interface->captureWindow(includePointer, includeBorder);
-        watcher = new QDBusPendingCallWatcher(pendingCall, this);
-        break;
-    }
-    case Area: {
-        QDBusPendingCall pendingCall = m_interface->captureArea();
-        watcher = new QDBusPendingCallWatcher(pendingCall, this);
+        const auto screens = qGuiApp->screens();
+        m_screensToGo = screens.size();
+
+        QRect screensGeometry;
+        for (auto *screen : screens)
+            screensGeometry |= screen->geometry();
+        m_finalImage = QImage(screensGeometry.size(), QImage::Format_RGB32);
+
+        for (auto *screen : screens) {
+            auto *frame = m_screencopy->captureScreen(screen, includePointer);
+            connect(frame, &WlrScreencopyFrameV1::copied, this, &ScreenshotClient::handleFrameCopied);
+        }
         break;
     }
     default:
         break;
     }
-
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *self) {
-        QDBusPendingReply<QByteArray> reply = *self;
-
-        self->deleteLater();
-
-        if (reply.isError()) {
-            qWarning("Failed to capture the screen: %s", reply.error().message().toUtf8().constData());
-            QGuiApplication::exit(1);
-        }
-
-        QByteArray data = reply.argumentAt<0>();
-        m_imageProvider->image.loadFromData(data, "PNG");
-
-        Q_EMIT screenshotDone();
-
-        m_inProgress = false;
-
-        // Quit in non-interactive mode because we only take one screenshot
-        if (!m_interactive)
-            QGuiApplication::quit();
-    });
 
     m_inProgress = true;
 }

@@ -26,7 +26,6 @@
 
 #include <QtCore/QCommandLineParser>
 #include <QtCore/QCommandLineOption>
-#include <QDBusConnection>
 #include <QtWidgets/QApplication>
 #include <QtQuickControls2/QQuickStyle>
 
@@ -108,12 +107,6 @@ int main(int argc, char *argv[])
 
     // Parse command line
     parser.process(app);
-
-    // Check if the D-Bus session bus is available
-    if (!QDBusConnection::sessionBus().isConnected()) {
-        qWarning("Cannot connect to the D-Bus session bus.");
-        return 1;
-    }
 
     // Run the application
     ScreenshotClient *screenshooter = new ScreenshotClient();
