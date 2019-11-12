@@ -2,7 +2,7 @@
 <context>
     <name>ScreenshotClient</name>
     <message>
-        <location filename="../screenshotclient.cpp" line="199"/>
+        <location filename="../screenshotclient.cpp" line="205"/>
         <source>Screenshot from %1</source>
         <translation>Снимок экрана от %1</translation>
     </message>
@@ -32,23 +32,8 @@
     </message>
     <message>
         <location filename="../qml/main.qml" line="80"/>
-        <source>This screen</source>
-        <translation>Этот экран</translation>
-    </message>
-    <message>
-        <location filename="../qml/main.qml" line="81"/>
-        <source>Active window</source>
-        <translation>Активное окно</translation>
-    </message>
-    <message>
-        <location filename="../qml/main.qml" line="82"/>
-        <source>Specific window</source>
-        <translation>Выбранное окно</translation>
-    </message>
-    <message>
-        <location filename="../qml/main.qml" line="83"/>
-        <source>Area</source>
-        <translation>Область</translation>
+        <source>All screens</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/main.qml" line="90"/>

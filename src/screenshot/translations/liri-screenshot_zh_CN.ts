@@ -2,7 +2,7 @@
 <context>
     <name>ScreenshotClient</name>
     <message>
-        <location filename="../screenshotclient.cpp" line="199"/>
+        <location filename="../screenshotclient.cpp" line="205"/>
         <source>Screenshot from %1</source>
         <translation>从 1% 截屏</translation>
     </message>
@@ -32,23 +32,8 @@
     </message>
     <message>
         <location filename="../qml/main.qml" line="80"/>
-        <source>This screen</source>
-        <translation>当前屏幕</translation>
-    </message>
-    <message>
-        <location filename="../qml/main.qml" line="81"/>
-        <source>Active window</source>
-        <translation>正在运行的视窗</translation>
-    </message>
-    <message>
-        <location filename="../qml/main.qml" line="82"/>
-        <source>Specific window</source>
-        <translation>指定视窗</translation>
-    </message>
-    <message>
-        <location filename="../qml/main.qml" line="83"/>
-        <source>Area</source>
-        <translation>区域</translation>
+        <source>All screens</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../qml/main.qml" line="90"/>
