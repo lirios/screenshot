@@ -33,7 +33,7 @@
     <message>
         <location filename="../qml/main.qml" line="80"/>
         <source>All screens</source>
-        <translation type="unfinished"/>
+        <translation>Alle skærme</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="90"/>
