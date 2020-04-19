@@ -1,0 +1,13 @@
+[
+  {
+    "type": "ts",
+    "directory": "src/screenshot",
+    "output_path": "translations/screenshot/liri-screenshot.ts"
+  },
+  {
+    "type": "desktop",
+    "source_file": "src/screenshot/io.liri.Screenshot.desktop.in",
+    "file_filter": "translations/screenshot/io.liri.Screenshot_<lang>.desktop.in",
+    "output_path": "src/screenshot/io.liri.Screenshot.desktop"
+  }
+]
