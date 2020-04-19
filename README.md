@@ -5,7 +5,6 @@ Screenshot
 [![GitHub release](https://img.shields.io/github/release/lirios/screenshot.svg)](https://github.com/lirios/screenshot)
 [![Build Status](https://travis-ci.org/lirios/screenshot.svg?branch=develop)](https://travis-ci.org/lirios/screenshot)
 [![GitHub issues](https://img.shields.io/github/issues/lirios/screenshot.svg)](https://github.com/lirios/screenshot/issues)
-[![Maintained](https://img.shields.io/maintenance/yes/2018.svg)](https://github.com/lirios/screenshot/commits/develop)
 
 Utility to capture the screen of a Liri desktop.
 
