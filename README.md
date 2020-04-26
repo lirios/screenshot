@@ -3,7 +3,7 @@ Screenshot
 
 [![License](https://img.shields.io/badge/license-GPLv3.0-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 [![GitHub release](https://img.shields.io/github/release/lirios/screenshot.svg)](https://github.com/lirios/screenshot)
-[![Build Status](https://travis-ci.org/lirios/screenshot.svg?branch=develop)](https://travis-ci.org/lirios/screenshot)
+[![CI](https://github.com/lirios/screenshot/workflows/CI/badge.svg?branch=develop)](https://github.com/lirios/screenshot/actions?query=workflow%3ACI)
 [![GitHub issues](https://img.shields.io/github/issues/lirios/screenshot.svg)](https://github.com/lirios/screenshot/issues)
 
 Utility to capture the screen of a Liri desktop.
