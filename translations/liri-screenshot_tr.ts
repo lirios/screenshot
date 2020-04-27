@@ -4,7 +4,7 @@
     <message>
         <location filename="../screenshotclient.cpp" line="205"/>
         <source>Screenshot from %1</source>
-        <translation type="unfinished"/>
+        <translation>%1 ekran görüntüsü</translation>
     </message>
 </context>
 <context>
@@ -33,7 +33,7 @@
     <message>
         <location filename="../qml/main.qml" line="80"/>
         <source>All screens</source>
-        <translation type="unfinished"/>
+        <translation>Tüm ekranlar</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="90"/>
