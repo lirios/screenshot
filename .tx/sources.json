@@ -7,7 +7,8 @@
   {
     "type": "desktop",
     "source_file": "src/screenshot/io.liri.Screenshot.desktop.in",
-    "file_filter": "translations/io.liri.Screenshot_<lang>.desktop.in",
-    "output_path": "src/screenshot/io.liri.Screenshot.desktop"
+    "dest_file": "src/screenshot/io.liri.Screenshot.desktop",
+    "file_filter": "translations/data/desktop/<lang>.po",
+    "output_path": "translations/data/desktop/desktop.pot"
   }
 ]
