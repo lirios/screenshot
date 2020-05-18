@@ -33,7 +33,7 @@
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="80"/>
         <source>All screens</source>
-        <translation type="unfinished"/>
+        <translation>所有屏幕</translation>
     </message>
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="90"/>
@@ -43,12 +43,12 @@
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="101"/>
         <source>Include pointer</source>
-        <translation>包含指针</translation>
+        <translation>包含鼠标指针</translation>
     </message>
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="111"/>
         <source>Include the window border</source>
-        <translation>包含视窗边界</translation>
+        <translation>包含窗口边框</translation>
     </message>
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="129"/>
