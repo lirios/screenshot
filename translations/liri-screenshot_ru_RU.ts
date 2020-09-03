@@ -4,7 +4,7 @@
     <message>
         <location filename="../src/screenshot/screenshotclient.cpp" line="205"/>
         <source>Screenshot from %1</source>
-        <translation type="unfinished"/>
+        <translation>Скриншот с %1</translation>
     </message>
 </context>
 <context>
