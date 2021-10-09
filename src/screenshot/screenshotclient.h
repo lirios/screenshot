@@ -34,7 +34,7 @@
 #include <QVector>
 #include <QQmlApplicationEngine>
 
-#include <LiriWaylandClient/WlrScreencopyV1>
+#include <LiriWaylandClient/WlrScreencopyManagerV1>
 
 #include "imageprovider.h"
 

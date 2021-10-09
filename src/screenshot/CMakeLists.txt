@@ -32,3 +32,5 @@ liri_add_executable(LiriScreenshot
         Qt5::QuickControls2
         Liri::WaylandClient
 )
+
+liri_finalize_executable(LiriScreenshot)
