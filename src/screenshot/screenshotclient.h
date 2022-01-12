@@ -34,7 +34,7 @@
 #include <QVector>
 #include <QQmlApplicationEngine>
 
-#include <LiriWaylandClient/WlrScreencopyManagerV1>
+#include <LiriAuroraClient/WlrScreencopyManagerV1>
 
 #include "imageprovider.h"
 
@@ -63,7 +63,7 @@ public:
 
     bool isEnabled() const;
 
-    Q_INVOKABLE void takeScreenshot(What what, bool includePointer, bool includeBorder);
+    Q_INVOKABLE void takeScreenshot(ScreenshotClient::What what, bool includePointer, bool includeBorder);
     Q_INVOKABLE QString screenshotFileName() const;
     Q_INVOKABLE void saveScreenshot(const QUrl &fileName);
 
@@ -83,7 +83,7 @@ private:
     QImage m_finalImage;
     QQmlApplicationEngine *m_engine = nullptr;
     ImageProvider *m_imageProvider = nullptr;
-    WlrScreencopyManagerV1 *m_screencopy = nullptr;
+    Aurora::Client::WlrScreencopyManagerV1 *m_screencopy = nullptr;
 
     struct {
         What what;

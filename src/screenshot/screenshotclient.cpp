@@ -71,9 +71,9 @@ ScreenshotClient::ScreenshotClient(QObject *parent)
     : QObject(parent)
     , m_engine(new QQmlApplicationEngine(this))
     , m_imageProvider(new ImageProvider())
-    , m_screencopy(new WlrScreencopyManagerV1())
+    , m_screencopy(new Aurora::Client::WlrScreencopyManagerV1())
 {
-    connect(m_screencopy, &WlrScreencopyManagerV1::activeChanged, this, [this] {
+    connect(m_screencopy, &Aurora::Client::WlrScreencopyManagerV1::activeChanged, this, [this] {
         bool oldValue = m_enabled;
 
         if (!oldValue && m_screencopy->isActive() && m_initialized)
@@ -146,7 +146,7 @@ void ScreenshotClient::done()
 
 void ScreenshotClient::handleFrameCopied(const QImage &image)
 {
-    auto *frame = qobject_cast<WlrScreencopyFrameV1 *>(sender());
+    auto *frame = qobject_cast<Aurora::Client::WlrScreencopyFrameV1 *>(sender());
     if (!frame)
         return;
 
@@ -187,7 +187,7 @@ void ScreenshotClient::takeScreenshot(What what, bool includePointer, bool inclu
 
         for (auto *screen : screens) {
             auto *frame = m_screencopy->captureScreen(screen, includePointer);
-            connect(frame, &WlrScreencopyFrameV1::copied, this, &ScreenshotClient::handleFrameCopied);
+            connect(frame, &Aurora::Client::WlrScreencopyFrameV1::copied, this, &ScreenshotClient::handleFrameCopied);
         }
         break;
     }

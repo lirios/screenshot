@@ -4,8 +4,8 @@ qt5_add_translation(LiriScreenshot_QM_FILES ${LiriScreenshot_TRANSLATIONS})
 install(FILES ${LiriScreenshot_QM_FILES}
         DESTINATION "${INSTALL_DATADIR}/liri-screenshot/translations")
 
-if(NOT TARGET Liri::WaylandClient)
-    find_package(Liri1WaylandClient REQUIRED)
+if(NOT TARGET Liri::AuroraClient)
+    find_package(Liri1AuroraClient REQUIRED)
 endif()
 
 liri_add_executable(LiriScreenshot
@@ -30,7 +30,7 @@ liri_add_executable(LiriScreenshot
         Qt5::Core
         Qt5::Widgets
         Qt5::QuickControls2
-        Liri::WaylandClient
+        Liri::AuroraClient
 )
 
 liri_finalize_executable(LiriScreenshot)

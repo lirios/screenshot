@@ -24,10 +24,6 @@ if(NOT UNIX OR ANDROID)
     return()
 endif()
 
-## Find Wayland:
-find_package(Wayland 1.15 COMPONENTS Client)
-set_package_properties(Wayland PROPERTIES TYPE REQUIRED)
-
 ## Find Qt 5:
 find_package(Qt5 "${QT_MIN_VERSION}"
     CONFIG REQUIRED
@@ -39,7 +35,6 @@ find_package(Qt5 "${QT_MIN_VERSION}"
         Qml
         Quick
         QuickControls2
-        WaylandClient
         LinguistTools
 )
 
