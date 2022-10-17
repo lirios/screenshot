@@ -4,7 +4,7 @@
     <message>
         <location filename="../src/screenshot/screenshotclient.cpp" line="205"/>
         <source>Screenshot from %1</source>
-        <translation type="unfinished"/>
+        <translation>Schermfoto van %1</translation>
     </message>
 </context>
 <context>
@@ -12,7 +12,7 @@
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="37"/>
         <source>Screenshot</source>
-        <translation>Schermafdruk</translation>
+        <translation>Schermfoto</translation>
     </message>
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="56"/>
@@ -28,27 +28,27 @@
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="74"/>
         <source>Grab</source>
-        <translation>Vastpakken</translation>
+        <translation>Vastleggen</translation>
     </message>
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="80"/>
         <source>All screens</source>
-        <translation type="unfinished"/>
+        <translation>Alle beeldschermen</translation>
     </message>
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="90"/>
         <source>Delay</source>
-        <translation>Vertraging</translation>
+        <translation>Wachttijd</translation>
     </message>
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="101"/>
         <source>Include pointer</source>
-        <translation>Muisaanwijzer toevoegen</translation>
+        <translation>Muisaanwijzer tonen</translation>
     </message>
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="111"/>
         <source>Include the window border</source>
-        <translation>Vensterrand toevoegen</translation>
+        <translation>Vensterrand tonen</translation>
     </message>
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="129"/>
@@ -58,12 +58,12 @@
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="137"/>
         <source>Copy to clipboard</source>
-        <translation>Naar klembord kopiëren</translation>
+        <translation>Kopiëren naar klembord</translation>
     </message>
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="186"/>
         <source>Save Screenshot As</source>
-        <translation>Schermafdruk opslaan als</translation>
+        <translation>Schermfoto opslaan als</translation>
     </message>
     <message>
         <location filename="../src/screenshot/qml/main.qml" line="189"/>
