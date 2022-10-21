@@ -36,6 +36,7 @@ find_package(Qt5 "${QT_MIN_VERSION}"
         Quick
         QuickControls2
         LinguistTools
+        WaylandClient
 )
 
 ## Add subdirectories:
