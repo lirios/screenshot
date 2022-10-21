@@ -14,6 +14,7 @@ endif()
 
 ## Set minimum versions required:
 set(QT_MIN_VERSION "5.10.0")
+set(WAYLAND_MIN_VERSION "1.15")
 
 ## Liri specific setup common for all modules:
 include(LiriSetup)
@@ -23,6 +24,10 @@ if(NOT UNIX OR ANDROID)
     message(NOTICE "Skipping the build as the condition \"UNIX OR ANDROID\" is not met.")
     return()
 endif()
+
+## Find Wayland:
+find_package(Wayland "${WAYLAND_MIN_VERSION}" COMPONENTS Client)
+set_package_properties(Wayland PROPERTIES TYPE REQUIRED)
 
 ## Find Qt 5:
 find_package(Qt5 "${QT_MIN_VERSION}"
